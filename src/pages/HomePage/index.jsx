@@ -29,10 +29,7 @@ export const HomePage = ({ toast }) => {
       localStorage.setItem('@CARTLIST', JSON.stringify(cartList));
    }, [cartList]);
 
-   const addProduct = (item) => {
-      setCartList([...cartList, item]);
-      console.log(item.id);
-   }
+   const addProduct = (item) => setCartList([...cartList, item]);
 
    const removeProduct = (item) => setCartList(item);
 
