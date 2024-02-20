@@ -22,14 +22,17 @@ export const HomePage = ({ toast }) => {
          getProducts();
       }, []);
    } catch (error) {
-      throw error
-   }
+      throw error;
+   };
 
    useEffect(() => {
       localStorage.setItem('@CARTLIST', JSON.stringify(cartList));
    }, [cartList]);
 
-   const addProduct = (item) => setCartList([...cartList, item]);
+   const addProduct = (item) => {
+      setCartList([...cartList, item]);
+      console.log(item.id);
+   }
 
    const removeProduct = (item) => setCartList(item);
 
@@ -39,7 +42,7 @@ export const HomePage = ({ toast }) => {
 
    const handleOpen = () => setIsOpen(true);
 
-   const handleClose = () => setIsOpen(false)
+   const handleClose = () => setIsOpen(false);
 
    const productsResult = productList.filter(product => {
       const searchFilter =
@@ -67,8 +70,8 @@ export const HomePage = ({ toast }) => {
                   cartList={cartList}
                   removeProduct={removeProduct}
                   removeAllProducts={removeAllProducts}
-                  handleClose={handleClose} 
-                  toast={toast}/>
+                  handleClose={handleClose}
+                  toast={toast} />
                : null}
          </main>
       </>

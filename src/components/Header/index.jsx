@@ -1,6 +1,6 @@
-import { useState } from "react";
-import Logo from "../../assets/Logo.svg";
-import { MdSearch, MdShoppingCart } from "react-icons/md";
+import { useState } from 'react';
+import Logo from '../../assets/Logo.svg';
+import { MdSearch, MdShoppingCart } from 'react-icons/md';
 
 import styles from './styles.module.scss'
 
@@ -17,25 +17,25 @@ export const Header = ({ cartList, getProducts, handleOpen }) => {
       setValue('');
    }
 
-   const openModal = () => handleOpen()
+   const openModal = () => handleOpen();
 
    return (
       <header className={styles.container}>
          <div>
-            <img src={Logo} alt="Logo Kenzie Burguer" />
+            <img src={Logo} alt='Logo Kenzie Burguer' />
             <form onSubmit={submit}>
                <input
-                  type="text"
+                  type='text'
                   value={value}
                   onChange={handleSearch}
                />
-               <button type="submit" >
+               <button type='submit' >
                   <MdSearch size={21} />
                </button>
             </form>
             <button>
                <MdShoppingCart size={21} onClick={() => openModal()} />
-               <span className="body">{cartList.length}</span>
+               <span className='body'>{cartList.length}</span>
             </button>
          </div>
       </header>

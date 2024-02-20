@@ -1,10 +1,10 @@
-import { HomePage } from "./pages/HomePage"
+import { HomePage } from './pages/HomePage';
 import { ToastContainer, toast } from 'react-toastify';
 
-import './styles/index.scss'
+import './styles/index.scss';
 import 'react-toastify/dist/ReactToastify.css';
 
-function App() {
+export const App = () => {
   return (
     <>
       <ToastContainer
@@ -16,11 +16,9 @@ function App() {
         pauseOnFocusLoss={false}
         draggable={false}
         pauseOnHover={false}
-        theme="light"
+        theme='light'
         transition:Bounce />
       <HomePage toast={toast} />
     </>
   )
 }
-
-export default App

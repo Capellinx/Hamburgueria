@@ -1,12 +1,11 @@
 import { MdDelete } from 'react-icons/md';
-import styles from './styles.module.scss'
+import styles from './styles.module.scss';
 
 export const CartItemCard = ({ product, removeProduct, cartList, toast }) => {
-
    const handleRemove = (idRemove) => {
-      const newProductList = cartList.filter((item) => item.id !== idRemove)
-      removeProduct(newProductList)
-      toast.info('Item removido')
+      const newProductList = cartList.filter((item) => item.id !== idRemove);
+      removeProduct(newProductList);
+      toast.info('Item removido');
    }
 
    return (

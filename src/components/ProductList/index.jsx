@@ -1,5 +1,5 @@
 import { ProductCard } from './ProductCard';
-import styles from './styles.module.scss'
+import styles from './styles.module.scss';
 
 export const ProductList = ({ productList, addProduct, toast }) => {
 
@@ -13,7 +13,7 @@ export const ProductList = ({ productList, addProduct, toast }) => {
                productList={productList}
                toast={toast}
             />
-         ))}
+         ))};
       </ul>
    );
 };
