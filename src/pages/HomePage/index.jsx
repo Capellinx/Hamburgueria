@@ -1,25 +1,75 @@
-import { useState } from "react";
-import { CartModal } from "../../components/CartModal";
-import { Header } from "../../components/Header";
-import { ProductList } from "../../components/ProductList";
+import { ProductList } from '../../components/ProductList';
+import { CartModal } from '../../components/CartModal';
+import { Header } from '../../components/Header';
 
-export const HomePage = () => {
+import { useEffect, useState } from 'react';
+import { api } from '../../services/api';
+
+export const HomePage = ({ toast }) => {
+   const cartListStorage = JSON.parse(localStorage.getItem('@CARTLIST'));
+
+   const [cartList, setCartList] = useState(cartListStorage);
    const [productList, setProductList] = useState([]);
-   const [cartList, setCartList] = useState([]);
+   const [searchItem, setSearchItem] = useState('');
+   const [isOpen, setIsOpen] = useState(false);
 
-   // useEffect montagem - carrega os produtos da API e joga em productList
-   // useEffect atualização - salva os produtos no localStorage (carregar no estado)
-   // adição, exclusão, e exclusão geral do carrinho
-   // renderizações condições e o estado para exibir ou não o carrinho
-   // filtro de busca
-   // estilizar tudo com sass de forma responsiva
+   try {
+      useEffect(() => {
+         const getProducts = async () => {
+            const { data } = await api.get('/products');
+            setProductList(data);
+         };
+         getProducts();
+      }, []);
+   } catch (error) {
+      throw error
+   }
+
+   useEffect(() => {
+      localStorage.setItem('@CARTLIST', JSON.stringify(cartList));
+   }, [cartList]);
+
+   const addProduct = (item) => setCartList([...cartList, item]);
+
+   const removeProduct = (item) => setCartList(item);
+
+   const removeAllProducts = (item) => setCartList(item);
+
+   const getProducts = (item) => setSearchItem(item);
+
+   const handleOpen = () => setIsOpen(true);
+
+   const handleClose = () => setIsOpen(false)
+
+   const productsResult = productList.filter(product => {
+      const searchFilter =
+         product.name.toLowerCase().includes(searchItem.toLowerCase()) ||
+         product.category.toLowerCase().includes(searchItem.toLowerCase());
+
+      return searchFilter;
+   });
 
    return (
       <>
-         <Header />
+         <Header
+            productList={productList}
+            getProducts={getProducts}
+            cartList={cartList}
+            handleOpen={handleOpen} />
          <main>
-            <ProductList productList={productList} />
-            <CartModal cartList={cartList} />
+            <ProductList
+               productList={productsResult}
+               addProduct={addProduct}
+               toast={toast} />
+            {isOpen
+               ?
+               <CartModal
+                  cartList={cartList}
+                  removeProduct={removeProduct}
+                  removeAllProducts={removeAllProducts}
+                  handleClose={handleClose} 
+                  toast={toast}/>
+               : null}
          </main>
       </>
    );

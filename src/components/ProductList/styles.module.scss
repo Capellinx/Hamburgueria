@@ -1,0 +1,29 @@
+.container {
+   max-width: 1398px;
+   margin: 2.0rem auto;
+
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
+   gap: 6.0rem;
+}
+
+
+@media (max-width: 1024px) {
+   .container {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      overflow-x: auto;
+   }
+}
+
+
+@media (max-width: 425px) {
+   .container {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+   }
+}

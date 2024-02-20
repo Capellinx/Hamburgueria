@@ -1,0 +1,30 @@
+.btn__default {
+   max-width: 13.0rem;
+   padding: 2.0rem;
+   color: var(--gray-0);
+   background-color: var(--gray-3);
+   border-radius: var(--radius);
+
+   transition: 0.2s all ease-in-out;
+   cursor: pointer;
+
+   &:hover {
+      background-color: var(--color-primary);
+   }
+}
+
+.btn__midium {
+   max-width: 13.0rem;
+   height: 4.0rem;
+   padding-inline: 2.0rem;
+   color: var(--gray-0);
+   background-color: var(--gray-3);
+   border-radius: var(--radius);
+
+   transition: 0.2s all ease-in-out;
+   cursor: pointer;
+
+   &:hover {
+      background-color: var(--color-primary);
+   }
+}

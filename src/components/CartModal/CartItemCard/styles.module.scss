@@ -1,0 +1,32 @@
+.container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+   .product {
+      height: 10.5rem;
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      img {
+         width: 8.0rem;
+         height: 8.0rem;
+         background-color: var(--gray-1);
+      }
+   }
+
+   button {
+      padding-right: 1.4rem;
+      background-color: transparent;
+      color: var(--gray-2);
+
+      cursor: pointer;
+
+      &:hover {
+         color: var(--gray-6);
+      }
+   }
+
+}

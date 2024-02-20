@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+%fonts {
+   font-family: 'Inter', sans-serif;
+   color: var(--gray-3);
+}
+
+.title1 {
+   @extend %fonts;
+   font-weight: bold;
+   font-size: 2.6rem;
+   line-height: 3.4rem;
+   color: var(--gray-6);
+}
+
+.title2 {
+   @extend %fonts;
+   font-weight: bold;
+   font-size: 2.2rem;
+   line-height: 2.4rem;
+   color: var(--gray-6);
+}
+
+.title3 {
+   @extend %fonts;
+   font-weight: bold;
+   font-size: 1.8rem;
+   line-height: 2.4rem;
+   color: var(--gray-6);
+}
+
+.headline {
+   @extend %fonts;
+   font-weight: normal;
+   font-size: 1.4rem;
+   line-height: 2.4rem;
+   color: var(--gray-3);
+}
+
+.body-bold {
+   @extend %fonts;
+   font-weight: 700;
+   font-size: 1.4rem;
+   line-height: 2.4rem;
+   color: var(--gray-3);
+}
+
+.caption {
+   @extend %fonts;
+   font-weight: normal;
+   font-size: 1.2rem;
+   line-height: 1.6rem;
+   color: var(--gray-3);
+}
+
+.body {
+   @extend %fonts;
+   font-weight: 600;
+   font-size: 1.4rem;
+   line-height: 2.4rem;
+   color: var(--color-primary);
+}
+
+body {
+   @extend %fonts;
+   font-weight: 500;
+   font-size: 1.6rem;
+   line-height: 1.6rem;
+}
