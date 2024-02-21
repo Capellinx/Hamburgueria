@@ -6,30 +6,24 @@ import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 
 export const HomePage = ({ toast }) => {
-   const cartListStorage = JSON.parse(localStorage.getItem('@CARTLIST'));
+   const cartListStorage = JSON.parse(localStorage.getItem('@CARTLIST')) || [];
 
    const [cartList, setCartList] = useState(cartListStorage);
    const [productList, setProductList] = useState([]);
    const [searchItem, setSearchItem] = useState('');
    const [isOpen, setIsOpen] = useState(false);
 
-   try {
-      useEffect(() => {
-         const getProducts = async () => {
-            const { data } = await api.get('/products');
-            setProductList(data);
-         };
-         getProducts();
-      }, []);
-   } catch (error) {
-      throw error;
-   };
+   const addProduct = (item) => {
+      const findSameItem = cartList.findIndex(cartItem => cartItem.id === item.id);
 
-   useEffect(() => {
-      localStorage.setItem('@CARTLIST', JSON.stringify(cartList));
-   }, [cartList]);
+      if (findSameItem !== -1) {
+         toast.warning('Este item ja foi adicionado');
+         return;
+      }
 
-   const addProduct = (item) => setCartList([...cartList, item]);
+      toast.success('Adicionado ao carrinho');
+      setCartList([...cartList, item]);
+   }
 
    const removeProduct = (item) => setCartList(item);
 
@@ -48,6 +42,22 @@ export const HomePage = ({ toast }) => {
 
       return searchFilter;
    });
+
+   try {
+      useEffect(() => {
+         const getProducts = async () => {
+            const { data } = await api.get('/products');
+            setProductList(data);
+         };
+         getProducts();
+      }, []);
+   } catch (error) {
+      toast.error(error);
+   };
+
+   useEffect(() => {
+      localStorage.setItem('@CARTLIST', JSON.stringify(cartList));
+   }, [cartList]);
 
    return (
       <>

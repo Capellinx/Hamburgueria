@@ -3,11 +3,10 @@ import styles from './styles.module.scss';
 export const ProductCard = ({ product, addProduct, toast }) => {
 
     const handleClick = (product) => {
-        const dataProduct = { ...product, id: crypto.randomUUID() }
+        let dataProduct = { ...product }
         addProduct(dataProduct);
-        toast.success('Adicionado ao carrinho');
     }
-
+    
     return (
         <li className='card'>
             <img

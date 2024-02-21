@@ -18,9 +18,10 @@ export const CartModal = ({
 
    const handleRemoveAll = () => {
       removeAllProducts([]);
-      toast.info('Todos foram removidos');
+      cartList.length == 0 ? toast.warning('Todos ja foram removidos!')
+         : toast.info('Todos foram removidos');
    };
-   
+
    const closeModal = () => handleClose();
 
    useEffect(() => {
